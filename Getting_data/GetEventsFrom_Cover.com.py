@@ -100,14 +100,25 @@ getEvents_Covers()
 
 #EXAMPLE LINK: https://www.covers.com/sport/basketball/nba/linemovement/ind-at-det/315483
 
+
 for i in IDs:
     full_line_history_link[i] = "https://www.covers.com/sport/"+games[i][2]+"/"+games[i][3]+"/linemovement/"+games[i][0]+"/"+i
 
+
+#full_line_history_link['304912'] = "https://www.covers.com/sport/"+games['304912'][2]+"/"+games['304912'][3]+"/linemovement/"+games['304912'][0]+"/"+'304912'
+
+
+
+
+
 for i in full_line_history_link:
     try:
-        lineMovementHistory.scrape(full_line_history_link[i])
+        
+        odd_df = lineMovementHistory.scrape(full_line_history_link[i])
+        DataStorage.uploadData(i,games[i],odd_df)
         print("================================="+"\n")
-    except:
+    except Exception as ex:
+        print(ex)
         print("SCRAPING ERROR")
         print(full_line_history_link[i])
         print("================================="+"\n")

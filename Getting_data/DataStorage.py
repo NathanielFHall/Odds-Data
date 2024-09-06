@@ -2,13 +2,22 @@
 #takes dataframe of general info and adds it to a csv textfile
 #uploads these file to github?
 from datetime import datetime
+from pathlib import Path 
+import pandas as pd
 current_time = datetime.now()
+
 
 MONTH = {'Jan': 1, 'Feb':2, 'Mar':3, 'Apr':4, 'May':5, 'Jun':6, 'Jul':7, 'Aug':8, 'Sep':9, 'Oct':10, 'Nov':11, 'Dec':12}
 ABC = {'|':'27','_':'00','a': '01', 'b': '02', 'c': '03', 'd': '04', 'e': '05', 'f': '06', 'g': '07', 'h': '08', 'i': '09', 'j': '10', 'k': '11', 'l': '12', 'm': '13', 'n': '14', 'o': '15', 'p': '16', 'q': '17', 'r': '18', 's': '19', 't': '20', 'u': '21', 'v': '22', 'w': '23', 'x': '24', 'y': '25', 'z': '26'}
 abc = ['_','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z','|']
 sports = {"soccer":0, "basketball":1,"baseball":2, "football":3,"hockey":4,"golf":5,"other":6}
 sportslist = ["soccer", "basketball","baseball", "football","hockey","golf","other"]
+
+
+dfTEST = pd.DataFrame([[1,2,3],[4,5,6],[7,8,9]],columns=["A","B","C"])
+
+
+Games_Recorded = open("Getting_data/Games Recorded","a")
 
 #function to attatch an ID to any data point
 #input [teamA-at-teamB,date,sport,league]
@@ -67,3 +76,19 @@ def getInfoFromID(ID):
 #print(getID(['sea-at-ny', 'Sep 5', 'basketball', 'wnba'],302895))
 #print(getInfoFromID("302895-219050127142500905"))
 
+
+
+#create files: 1) list of game id's each line gameid | teams | date of game 2)the csv of the games dataframe
+def RecordUpload(gameID,info):
+    line = ""
+    line+=str(gameID)+"|"
+    line+=info[0]+"|"+info[1]+"|"+info[2]+"|"+info[3]+"|"
+    line+= str(current_time.year)+":"+str(current_time.month)+":"+str(current_time.hour)+":"+str(current_time.minute)
+    line+="\n"
+    Games_Recorded.write(line)
+def uploadData(gameID,info,df):
+    RecordUpload(gameID,info)
+    filename = info[0]+" "+str(gameID)
+    filepath = Path('Getting_data/Games Data/'+filename)  
+    df.to_csv(filepath) 
+    print("created file: "+filename)

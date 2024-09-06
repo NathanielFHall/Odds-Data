@@ -154,9 +154,10 @@ def scrape(link):
 
         df_ROW = [i[0],i[1][0],i[1][1],i[2][0],i[2][1],i[3][0],i[3][1],i[4][0],i[4][1],i[5][0],i[5][1]]
         df_ROWS.append(df_ROW)
+   
     df = pd.DataFrame(df_ROWS,columns=["Date","Fanduel Odds["+TeamA+"]","Fanduel Odds["+TeamB+"]","Cesears Odds["+TeamA+"]","Cesears Odds["+TeamB+"]","Bet365 Odds["+TeamA+"]","Bet365 Odds["+TeamB+"]","DraftKings Odds["+TeamA+"]","DraftKings Odds["+TeamB+"]","BetMGM Odds["+TeamA+"]","BetMGM Odds["+TeamB+"]"])
     display(df)
-    
+    return df
 
 
 
