@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import lineMovementHistory
+import DataStorage
 
 MONTH = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 current_time = datetime.now()
@@ -98,6 +99,7 @@ getEvents_Covers()
 #create the links for full line history
 
 #EXAMPLE LINK: https://www.covers.com/sport/basketball/nba/linemovement/ind-at-det/315483
+
 for i in IDs:
     full_line_history_link[i] = "https://www.covers.com/sport/"+games[i][2]+"/"+games[i][3]+"/linemovement/"+games[i][0]+"/"+i
 
