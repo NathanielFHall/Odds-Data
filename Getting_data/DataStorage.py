@@ -83,7 +83,7 @@ def RecordUpload(gameID,info):
     line = ""
     line+=str(gameID)+"|"
     line+=info[0]+"|"+info[1]+"|"+info[2]+"|"+info[3]+"|"
-    line+= str(current_time.year)+":"+str(current_time.month)+":"+":"+str(current_time.day)+":"+str(current_time.hour)+":"+str(current_time.minute)
+    line+= str(current_time.year)+":"+str(current_time.month)+":"+str(current_time.day)+":"+str(current_time.hour)+":"+str(current_time.minute)
     line+="\n"
     Games_Recorded.write(line)
 def uploadData(gameID,info,df):
