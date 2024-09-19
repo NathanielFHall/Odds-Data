@@ -161,19 +161,4 @@ def scrape(link):
 
 
 
-#right now
-'''
-This script can take a given link to the full line history page and create a set of dictionaries for each sportsbook where the date is the key and the odds for that 
-date are listed
 
-it can also take all dates and put them into one array of all dates (not sorted)
-'''
-#still needs
-'''
-
-
-2) to add these rows into the dataframe
-3) write a function that takes this dataframe and returns mean median and variation of odds
-
-
-'''
