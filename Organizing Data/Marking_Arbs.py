@@ -50,5 +50,5 @@ def Find_Arbs(filename):
     print("=========================================")
     print(List_implied_prob(TeamA_FD))
 
-    
+
 Find_Arbs("Getting_data/Games Data/sea-at-hou 301482")
